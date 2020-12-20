@@ -52,24 +52,61 @@ namespace NM_Test_print_zebra
             Font printFont2 = new Font("Merck", 35);
             //Font printFontBarcode = new Font("Free 3 of 9", 25);
             Font printFontBarcode = new Font("Free 3 of 9 Extended", 30);
+            Font[] TableauFont = new Font[30]
+            {
+                new Font("Free 3 of 9 Extended", 30),
+                new Font("Free 3 of 9 Extended", 29),
+                new Font("Free 3 of 9 Extended", 28),
+                new Font("Free 3 of 9 Extended", 27),
+                new Font("Free 3 of 9 Extended", 26),
+                new Font("Free 3 of 9 Extended", 25),
+                new Font("Free 3 of 9 Extended", 24),
+                new Font("Free 3 of 9 Extended", 23),
+                new Font("Free 3 of 9 Extended", 22),
+                new Font("Free 3 of 9 Extended", 21),
+                new Font("Free 3 of 9 Extended", 20),
+                new Font("Free 3 of 9 Extended", 19),
+                new Font("Free 3 of 9 Extended", 18),
+                new Font("Free 3 of 9 Extended", 17),
+                new Font("Free 3 of 9 Extended", 16),
+                new Font("Free 3 of 9 Extended", 15),
+                new Font("Free 3 of 9 Extended", 14),
+                new Font("Free 3 of 9 Extended", 13),
+                new Font("Free 3 of 9 Extended", 12),
+                new Font("Free 3 of 9 Extended", 11),
+                new Font("Free 3 of 9 Extended", 10),
+                new Font("Free 3 of 9 Extended", 9),
+                new Font("Free 3 of 9 Extended", 8),
+                new Font("Free 3 of 9 Extended", 7),
+                new Font("Free 3 of 9 Extended", 6),
+                new Font("Free 3 of 9 Extended", 5),
+                new Font("Free 3 of 9 Extended", 4),
+                new Font("Free 3 of 9 Extended", 3),
+                new Font("Free 3 of 9 Extended", 2),
+                new Font("Free 3 of 9 Extended", 1)
+            };
+            //for(int j =0; j<30; j++)
+            //{
+            //    TableauFont.Append(new Font("Free 3 of 9 Extended", 30 - j));
+            //}
+
             //Font printFontBarcode = new Font("QR font tfb", 30);
             //Font printFontBarcode = new Font("Code 39", 19);
             //Font printFontBarcode = new Font("Code 128", 35);
-
             //Font printFont1 = new Font(FontFamily, 9, FontStyle.Bold);
 
-            
+
 
             SolidBrush br = new SolidBrush(System.Drawing.Color.Black);
             int i = 0;
             var dimension = TextRenderer.MeasureText("*" + textbox4.Text + "*", printFontBarcode);
             do
             {
-                printFontBarcode.Size = printFontBarcode.Size - 1;
+                printFontBarcode = TableauFont[i];
                 i++;
-                dimension = TextRenderer.MeasureText("*" + textbox4.Text + "*", printFontBarcode.Size-1);
-                System.Windows.MessageBox.Show("trop grand");
-            } while(dimension.Width > 340);
+                dimension = TextRenderer.MeasureText("*" + textbox4.Text + "*", printFontBarcode);
+                //System.Windows.MessageBox.Show("trop grand");
+            } while (dimension.Width > 340 && i < 30);
 
 
             ev.Graphics.DrawString(DateTime.Now.ToString(), printFontTresPetit, br, 5, 5);
@@ -83,6 +120,13 @@ namespace NM_Test_print_zebra
             //ev.Graphics.DrawString("TROP TROP FORT", printFont, br, 10, 65);
             //ev.Graphics.DrawString("*AAAAAAFFF*", printFont1, br, 10, 85);
             
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            Font printFontBarcode = new Font("Free 3 of 9 Extended", 30);
+            var dimension = TextRenderer.MeasureText("*" + textbox4.Text + "*", printFontBarcode);
+            System.Windows.MessageBox.Show("Taille du code-barre : " + dimension.Width.ToString() + " / maximum = 340");
         }
     }
 }

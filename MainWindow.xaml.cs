@@ -34,9 +34,7 @@ namespace NM_Test_print_zebra
             PrintDocument pd = new PrintDocument();
             pd.PrintPage += new PrintPageEventHandler(pd_PrintPage);
             // Set the printer name. 
-            pd.PrinterSettings.PrinterName = "ZDesigner ZT230-200dpi ZPL";
-            //pd.PrinterSettings.PrinterName = "\\NS5\hpoffice
-            //pd.PrinterSettings.PrinterName = "Zebra New GK420t"               
+            pd.PrinterSettings.PrinterName = "ZDesigner ZT230-200dpi ZPL";            
             for (int i = 0; i< int.Parse(textboxQte.Text); i++) 
             {
                 pd.Print();
@@ -50,7 +48,6 @@ namespace NM_Test_print_zebra
             Font printFontPetit = new Font("Arial", 25);
             Font printFontTresPetit = new Font("Arial", 12);
             Font printFont2 = new Font("Merck", 35);
-            //Font printFontBarcode = new Font("Free 3 of 9", 25);
             Font printFontBarcode = new Font("Free 3 of 9 Extended", 30);
             Font[] TableauFont = new Font[30]
             {
@@ -85,17 +82,6 @@ namespace NM_Test_print_zebra
                 new Font("Free 3 of 9 Extended", 2),
                 new Font("Free 3 of 9 Extended", 1)
             };
-            //for(int j =0; j<30; j++)
-            //{
-            //    TableauFont.Append(new Font("Free 3 of 9 Extended", 30 - j));
-            //}
-
-            //Font printFontBarcode = new Font("QR font tfb", 30);
-            //Font printFontBarcode = new Font("Code 39", 19);
-            //Font printFontBarcode = new Font("Code 128", 35);
-            //Font printFont1 = new Font(FontFamily, 9, FontStyle.Bold);
-
-
 
             SolidBrush br = new SolidBrush(System.Drawing.Color.Black);
             int i = 0;
@@ -105,8 +91,7 @@ namespace NM_Test_print_zebra
                 printFontBarcode = TableauFont[i];
                 i++;
                 dimension = TextRenderer.MeasureText("*" + textbox4.Text + "*", printFontBarcode);
-                //System.Windows.MessageBox.Show("trop grand");
-            } while (dimension.Width > 340 && i < 30);
+            } while (dimension.Width > 335 && i < 30);
 
 
             ev.Graphics.DrawString(DateTime.Now.ToString(), printFontTresPetit, br, 5, 5);
@@ -115,10 +100,7 @@ namespace NM_Test_print_zebra
             ev.Graphics.DrawString(textbox2.Text, printFontPetit, br, 5, 80); //Item
             ev.Graphics.DrawString(textbox4.Text, printFontTresPetit, br, 5, 150); //LPN code-barre
             ev.Graphics.DrawString("*"+textbox4.Text+"*", printFontBarcode, br, 5, 170); //LPN code-barre
-            //ev.Graphics.DrawString(textbox4.Text, printFontBarcode, br, 5, 210); //LPN code-barre
             ev.Graphics.DrawString(textbox3.Text, printFontGrand, br, 5, 210); //Locator
-            //ev.Graphics.DrawString("TROP TROP FORT", printFont, br, 10, 65);
-            //ev.Graphics.DrawString("*AAAAAAFFF*", printFont1, br, 10, 85);
             
         }
 
@@ -126,7 +108,7 @@ namespace NM_Test_print_zebra
         {
             Font printFontBarcode = new Font("Free 3 of 9 Extended", 30);
             var dimension = TextRenderer.MeasureText("*" + textbox4.Text + "*", printFontBarcode);
-            System.Windows.MessageBox.Show("Taille du code-barre : " + dimension.Width.ToString() + " / maximum = 340");
+            System.Windows.MessageBox.Show("Taille du code-barre : " + dimension.Width.ToString() + " / maximum = 335");
         }
     }
 }

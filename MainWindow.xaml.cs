@@ -1,20 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Printing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using System.ComponentModel;
 using System.Windows.Forms;
 
 namespace NM_Test_print_zebra
@@ -101,14 +88,6 @@ namespace NM_Test_print_zebra
             ev.Graphics.DrawString(textbox4.Text, printFontTresPetit, br, 5, 150); //LPN code-barre
             ev.Graphics.DrawString("*"+textbox4.Text+"*", printFontBarcode, br, 5, 170); //LPN code-barre
             ev.Graphics.DrawString(textbox3.Text, printFontGrand, br, 5, 210); //Locator
-            
-        }
-
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            Font printFontBarcode = new Font("Free 3 of 9 Extended", 30);
-            var dimension = TextRenderer.MeasureText("*" + textbox4.Text + "*", printFontBarcode);
-            System.Windows.MessageBox.Show("Taille du code-barre : " + dimension.Width.ToString() + " / maximum = 335");
         }
     }
 }
